@@ -1,0 +1,15 @@
+class Solution(object):
+    def atmost(self, nums, k):
+        l,count=0,0
+        dict={}
+        for r in range(len(nums)):
+            dict[nums[r]]=dict.get(nums[r],0)+1
+            while len(dict)>k:
+                dict[nums[l]]-=1
+                if dict[nums[l]]==0:
+                    dict.pop(nums[l])
+                l+=1
+            count+=r-l+1
+        return count 
+    def subarraysWithKDistinct(self, nums, k):
+        return self.atmost(nums, k)-self.atmost( nums, k-1)
