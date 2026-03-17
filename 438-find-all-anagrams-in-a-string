@@ -1,0 +1,16 @@
+class Solution(object):
+    def findAnagrams(self, s, p):
+        l,res=0,[]
+        dic2,dic1={},{}
+        for i in p:
+            dic1[i]=dic1.get(i,0)+1
+        for r in range(len(s)):
+            dic2[s[r]]=dic2.get(s[r],0)+1
+            if r-l+1==len(p):
+                if dic1==dic2:
+                    res.append(l)
+                dic2[s[l]]-=1
+                if(dic2[s[l]])==0:
+                    dic2.pop(s[l])
+                l+=1
+        return res
