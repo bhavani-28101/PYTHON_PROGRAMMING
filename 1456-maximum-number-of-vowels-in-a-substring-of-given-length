@@ -1,0 +1,16 @@
+class Solution(object):
+    def maxVowels(self, s, k):
+        dict={'a':0,'e':0,'i':0,'o':0,'u':0}
+        l,res,vowels=0,0,0
+        for r in range(len(s)):
+            if s[r] in dict:
+                dict[s[r]]=dict.get(s[r],0)+1
+            while r-l+1>k:
+                if s[l] in dict:
+                    dict[s[l]]-=1
+                    vowels-=1
+                l+=1
+            if r-l+1==k:
+                vowels=sum(dict.values())
+                res=max(res,vowels)
+        return res
