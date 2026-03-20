@@ -1,0 +1,36 @@
+class Solution(object):
+    def balancedString(self, s):
+        dict = {'Q':0, 'W':0, 'E':0, 'R':0}
+        
+        # build count
+        for ch in s:
+            dict[ch] = dict.get(ch, 0) + 1
+        
+        n = len(s)
+        res = n
+        l = 0
+        
+        # already balanced
+        if (dict['Q'] <= n//4 and 
+            dict['W'] <= n//4 and 
+            dict['E'] <= n//4 and 
+            dict['R'] <= n//4):
+            return 0
+        
+        for r in range(n):
+            dict[s[r]] -= 1   # remove
+            
+            while (l <= r and
+                   dict['Q'] <= n//4 and
+                   dict['W'] <= n//4 and
+                   dict['E'] <= n//4 and
+                   dict['R'] <= n//4):
+                
+                res = min(res, r - l + 1)
+                
+                dict[s[l]] += 1   # add back
+                l += 1            # ⭐ same fix
+        
+        return res
+
+        
