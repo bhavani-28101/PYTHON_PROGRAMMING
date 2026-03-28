@@ -1,0 +1,12 @@
+class Solution(object):
+    def maxConsecutiveAnswers(self, answerKey, k):
+        dict={'T':0,'F':0}
+        l,r,max_count,res=0,0,0,0
+        for r in range(len(answerKey)):
+            dict[answerKey[r]]=dict.get(answerKey[r],0)+1
+            max_count=max(dict[answerKey[r]],max_count)
+            while r-l+1-max_count>k:
+                dict[answerKey[l]]-=1
+                l+=1
+            res=max(res,r-l+1)
+        return res
