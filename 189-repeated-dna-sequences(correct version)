@@ -1,0 +1,15 @@
+class Solution(object):
+    def findRepeatedDnaSequences(self, s):
+        l=0
+        res=set()
+        mainres=set()
+        for r in range(len(s)):
+            while(r-l+1>10):
+                l+=1
+            if(r-l+1==10):
+                sub=s[l:r+1]
+                if(sub in res):
+                    mainres.add(sub)
+                else:
+                    res.add(sub)
+        return list(mainres)
