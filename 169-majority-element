@@ -1,0 +1,12 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        res,freq=0,0
+        mainres=float('-inf')
+        dict={}
+        for i in range(len(nums)):
+            dict[nums[i]]=dict.get(nums[i],0)+1
+            freq=dict.get(nums[i])
+            if(freq>res):
+                res=freq
+                mainres=nums[i]
+        return mainres
