@@ -1,0 +1,14 @@
+class Solution(object):
+    def maxSubarrayLength(self, nums, k):
+        dict={}
+        l,res=0,0
+        mainres=0
+        for r in range(len(nums)):
+            dict[nums[r]]=dict.get(nums[r],0)+1
+            while(dict[nums[r]]>k):
+                dict[nums[l]]-=1
+                l+=1
+            res=r-l+1
+            if res>mainres:
+                mainres=res
+        return mainres
