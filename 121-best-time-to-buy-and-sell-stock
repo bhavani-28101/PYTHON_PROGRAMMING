@@ -1,0 +1,10 @@
+class Solution(object):
+    def maxProfit(self, prices):
+        buy=float('inf')
+        sellprofit=0
+        for i in range(len(prices)):
+            if(prices[i]<buy):
+                buy=prices[i]
+            elif(prices[i]-buy>sellprofit):
+                sellprofit=(prices[i]-buy)
+        return sellprofit
