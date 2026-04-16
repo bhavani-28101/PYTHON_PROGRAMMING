@@ -1,0 +1,11 @@
+class Solution(object):
+    def subarraySum(self, nums, k):
+        prefix_sum=0
+        dict={0:1}
+        res=0
+        for n in nums:
+            prefix_sum+=n
+            if (prefix_sum-k) in dict:
+                res+=dict[prefix_sum-k]
+            dict[prefix_sum]=dict.get(prefix_sum,0)+1
+        return res
