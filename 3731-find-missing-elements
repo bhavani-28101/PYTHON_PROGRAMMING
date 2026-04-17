@@ -1,0 +1,10 @@
+class Solution(object):
+    def findMissingElements(self, nums):
+        res=[]
+        seen=set(nums)
+        minelement=min(nums)
+        maxelement=max(nums)
+        for r in range(minelement,maxelement):
+            if r not in seen:
+                res.append(r)
+        return res
