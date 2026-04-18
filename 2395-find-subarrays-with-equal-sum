@@ -1,0 +1,9 @@
+class Solution(object):
+    def findSubarrays(self, nums):
+        seen=set()
+        for i in range(len(nums)-1):
+            sumarr=nums[i]+nums[i+1]
+            if sumarr in seen:
+                return True
+            seen.add(sumarr)
+        return False
