@@ -1,0 +1,7 @@
+class Solution(object):
+    def findDuplicate(self, nums):
+        hs=set()
+        for r in nums:
+            if(r in hs):
+                return r
+            hs.add(r)
