@@ -1,0 +1,11 @@
+class Solution(object):
+    def singleNumber(self, nums):
+        res=0
+        dict={}
+        for r in nums:
+            dict[r]=dict.get(r,0)+1
+        for r in nums:
+            if dict.get(r)==1:
+                res=r
+                break
+        return res
