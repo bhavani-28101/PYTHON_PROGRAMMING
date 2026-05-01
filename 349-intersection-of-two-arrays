@@ -1,0 +1,15 @@
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        if len(nums1) < len(nums2):
+            small, large = nums1, nums2
+        else:
+            small, large = nums2, nums1
+
+        small_set = set(small)
+        res = set()
+
+        for num in large:
+            if num in small_set:
+                res.add(num)
+
+        return list(res)
