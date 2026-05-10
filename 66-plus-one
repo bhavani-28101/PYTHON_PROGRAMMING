@@ -1,0 +1,9 @@
+class Solution(object):
+    def plusOne(self, nums):
+        for r in range(len(nums)-1,-1,-1):
+            if(nums[r]!=9):
+                nums[r]=nums[r]+1
+                return nums
+            else:
+                nums[r]=0
+        return [1] + nums
