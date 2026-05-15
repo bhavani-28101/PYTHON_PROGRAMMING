@@ -1,0 +1,15 @@
+class Solution(object):
+    def maxArea(self, nums):
+        i,j=0,len(nums)-1
+        minele,res=0,float('-inf')
+        while((i!=len(nums)-1) and (j!=0) and (i!=j)):
+            if(nums[i]>=nums[j]):
+                minele=nums[j]
+                height=j-i
+                j-=1
+            else:
+                minele=nums[i]
+                height=j-i
+                i+=1
+            res=max(res,(minele*height))
+        return res
