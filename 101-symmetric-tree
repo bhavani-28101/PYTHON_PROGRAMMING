@@ -1,0 +1,14 @@
+class Solution(object):
+    def isSymmetric(self, root):
+        if(root is None):
+            return True
+        return self.isymm(root.left,root.right)
+    def isymm(self,p,q):
+        if((p is  None) and (q is None)):
+            return True
+        if((p is None) or (q is None)):
+            return False
+        if(p.val!=q.val):
+            return False
+        return self.isymm(p.left,q.right) and self.isymm(p.right,q.left)
+        
