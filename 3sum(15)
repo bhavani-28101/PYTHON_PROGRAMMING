@@ -1,0 +1,23 @@
+class Solution(object):
+    def threeSum(self, nums):
+        res=[]
+        mainres=[]
+        nums.sort()
+        for fixed in range(len(nums)):
+            l=fixed+1
+            r=len(nums)-1
+            while(l<r):
+                sum=nums[fixed]+nums[l]+nums[r]
+                if(sum<0):
+                    l+=1
+                elif(sum>0):
+                    r-=1
+                else:
+                    res=[nums[fixed],nums[l],nums[r]]
+                    if(res not in mainres):
+                        mainres.append(res)
+                        res=[]
+                    l+=1
+                    r-=1
+                    
+        return mainres
