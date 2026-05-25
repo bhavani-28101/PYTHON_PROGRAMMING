@@ -1,0 +1,14 @@
+class Solution(object):
+    def sortColors(self, nums):
+        if(len(nums)<=1):
+            return
+        freq=[0,0,0]
+        for r in range(len(nums)):
+            freq[nums[r]]+=1
+        k=0
+        for r in range(0,3):
+            count=freq[r]
+            while(count>0):
+                nums[k]=r
+                k+=1152
+                count-=1
