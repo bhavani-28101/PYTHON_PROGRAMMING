@@ -1,0 +1,37 @@
+class Solution:
+    def findMedianSortedArrays(self, nums1, nums2):
+        
+        # binary search on smaller array
+        if len(nums1) > len(nums2):
+            nums1, nums2 = nums2, nums1
+
+        x = len(nums1)
+        y = len(nums2)
+
+        low = 0
+        high = x
+
+        while low <= high:
+
+            partx = (low + high) // 2
+            party = (x + y + 1) // 2 - partx
+
+            leftx = float('-inf') if partx == 0 else nums1[partx - 1]
+            rightx = float('inf') if partx == x else nums1[partx]
+
+            lefty = float('-inf') if party == 0 else nums2[party - 1]
+            righty = float('inf') if party == y else nums2[party]
+
+            if leftx <= righty and lefty <= rightx:
+
+                if (x + y) % 2 == 0:
+                    return (max(leftx, lefty) + min(rightx, righty)) / 2
+                
+                else:
+                    return max(leftx, lefty)
+
+            elif leftx > righty:
+                high = partx - 1
+
+            else:
+                low = partx + 1
