@@ -1,0 +1,21 @@
+class Solution(object):
+    def firstMissingPositive(self, nums):
+        arr=set(nums)
+        missingnum=float('inf')
+        maxnum=float('-inf')
+        for r in nums:
+            maxnum=max(r,maxnum)
+            if (((r>=0) and ((r-1) not in arr)) or((r==0) and((r-1) in arr))):
+                num=r 
+                count=0
+                while(count<len(nums)):
+                    if(num not in arr):
+                        missingnum=min(num,missingnum)
+                    num+=1
+                    count+=1
+        if(1 not in arr):
+            return 1
+        elif((1 in arr) and (missingnum!=float('inf'))):
+            return missingnum
+        else:
+            return maxnum+1
