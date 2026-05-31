@@ -1,0 +1,18 @@
+class Solution(object):
+    def reverse(self, s):
+
+        sign = -1 if s < 0 else 1
+        s = abs(s)
+
+        rev = 0
+
+        while s > 0:
+            r = s % 10
+            rev = rev * 10 + r
+            if rev < -2147483648 or rev > 2147483647:
+                return 0
+            s //= 10
+
+        rev *= sign
+
+        return rev
