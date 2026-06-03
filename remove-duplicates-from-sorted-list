@@ -1,0 +1,12 @@
+lass Solution(object):
+    def deleteDuplicates(self, head):
+        temp=head
+        res=[]
+        while(temp.next!=None):
+            if(temp.val==temp.next.val):
+                temp=temp.next
+            else:
+                res.append(temp.val)
+                temp=temp.next
+        return res
+        
