@@ -1,0 +1,13 @@
+class Solution(object):
+    def search(self, nums, target):
+        return self.binarysearch(nums,0,len(nums)-1,target)
+    def binarysearch(self,nums,left,right,target):
+        if left>right:
+            return -1
+        mid=left+(right-left)//2
+        if(target==nums[mid]):
+            return mid
+        elif(target>nums[mid]):
+            return self.binarysearch(nums,mid+1,right,target)
+        else:
+            return self.binarysearch(nums,left,mid-1,target)
