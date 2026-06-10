@@ -1,0 +1,13 @@
+class Solution(object):
+    def mySqrt(self, x):
+        def binarysearch(low,high,x):
+            if low>high:
+                return high
+            mid=(low+high)//2
+            if(mid*mid==x):
+                return mid
+            elif(mid*mid<x):
+                return binarysearch(mid+1,high,x)
+            else:
+                return binarysearch(low,mid-1,x)
+        return binarysearch(1,x,x)
