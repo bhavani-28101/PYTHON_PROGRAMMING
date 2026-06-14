@@ -1,0 +1,42 @@
+class Solution(object):
+    def searchRange(self, nums, target):
+
+        res = []
+
+        def first(low, high):
+            if low > high:
+                return
+
+            mid = low + (high - low) // 2
+
+            if nums[mid] == target and (mid == 0 or nums[mid - 1] != target):
+                res.append(mid)
+                return
+
+            if nums[mid] >= target:
+                first(low, mid - 1)
+            else:
+                first(mid + 1, high)
+
+        def last(low, high):
+            if low > high:
+                return
+
+            mid = low + (high - low) // 2
+
+            if nums[mid] == target and (mid == len(nums) - 1 or nums[mid + 1] != target):
+                res.append(mid)
+                return
+
+            if nums[mid] <= target:
+                last(mid + 1, high)
+            else:
+                last(low, mid - 1)
+
+        first(0, len(nums) - 1)
+        last(0, len(nums) - 1)
+
+        if len(res) != 2:
+            return [-1, -1]
+
+        return res
