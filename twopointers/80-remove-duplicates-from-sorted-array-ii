@@ -1,0 +1,13 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        read,write=2,2
+        while(read<=len(nums)-1):
+            if(nums[read] !=nums[write-2]):
+                nums[write]=nums[read]
+                write+=1
+                read+=1
+            else:
+                read+=1
+        return write
+                
+        
