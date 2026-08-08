@@ -1,0 +1,11 @@
+class Solution(object):
+    def strStr(self, haystack, needle):
+        stack=[]
+        l=0
+        for r in range(len(needle)-1,len(haystack)):
+            if(haystack[l:r+1]==needle):
+                stack.append(l)
+            else:
+                l+=1
+        return -1 if stack == [] else stack[0]
+        
