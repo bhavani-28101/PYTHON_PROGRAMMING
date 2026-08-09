@@ -1,0 +1,9 @@
+class Solution(object):
+    def myPow(self, x, n):
+        return pow(x,n)
+    def pow(x,n):
+        res=1
+        if(n<=1):
+            return res
+        res=res*x
+        n-=1
