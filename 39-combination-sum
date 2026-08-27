@@ -1,0 +1,34 @@
+def combinationSum(self, candidates, target):
+
+    res = []
+    subset = []
+    total = 0
+    index = 0
+
+    def subsetgenerate(candidates, target, total, subset, res, index):
+
+        if index == len(candidates):
+            return
+
+        if total > target:
+            return
+
+        total += candidates[index]
+        subset.append(candidates[index])
+
+        if total == target:
+            res.append(subset[:])
+
+        elif total < target:
+            subsetgenerate(candidates, target, total, subset, res, index)
+
+        subset.pop()
+        total -= candidates[index]
+
+        index += 1
+
+        subsetgenerate(candidates, target, total, subset, res, index)
+
+    subsetgenerate(candidates, target, total, subset, res, index)
+
+    return res
