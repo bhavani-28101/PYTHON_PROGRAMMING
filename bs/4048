@@ -1,0 +1,31 @@
+class Solution:
+    def countSpecialIntegers(self, nums):
+        positions = {}
+
+        for i, x in enumerate(nums):
+            if x not in positions:
+                positions[x] = []
+            positions[x].append(i)
+
+        ans = 0
+
+        for pos in positions.values():
+            n = len(pos)
+
+            found = False
+
+            for i in range(n):
+                for j in range(i + 1, n):
+                    target = 2 * pos[j] - pos[i]
+
+                    if target in pos[j + 1:]:
+                        found = True
+                        break
+
+                if found:
+                    break
+
+            if found:
+                ans += 1
+
+        return ans
