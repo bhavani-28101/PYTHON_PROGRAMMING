@@ -1,0 +1,17 @@
+class Solution:
+    def countSpecialIntegers(self, nums):
+        positions = {}
+
+        for i, num in enumerate(nums):
+            if num not in positions:
+                positions[num] = []
+            positions[num].append(i)
+
+        ans = 0
+
+        for pos in positions.values():
+            if len(pos) == 3:
+                if pos[1] - pos[0] == pos[2] - pos[1]:
+                    ans += 1
+
+        return ans
