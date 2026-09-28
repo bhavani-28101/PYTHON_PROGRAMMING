@@ -1,0 +1,24 @@
+class Solution(object):
+    def floodFill(self, image, sr, sc, color):
+        startpixcol=image[sr][sc]
+        if(startpixcol==color):
+            return image
+        return self.colorfill(image,sr,sc,color,startpixcol)
+    def colorfill(self,image,sr,sc,color,startpixcol):
+        if(sc>=len(image[0]) or sc<0):
+            return
+        if(sr>=len(image) or sr<0):
+            return 
+        if(image[sr][sc]!=startpixcol):
+            return
+        image[sr][sc]=color
+            #left
+        self.colorfill(image,sr,sc-1,color,startpixcol) 
+            #right
+        self.colorfill(image,sr,sc+1,color,startpixcol) 
+            #bottom
+        self.colorfill(image,sr+1,sc,color,startpixcol)
+            #row
+        self.colorfill(image,sr-1,sc,color,startpixcol)
+        return image
+        
