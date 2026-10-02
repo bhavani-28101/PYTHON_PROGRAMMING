@@ -1,0 +1,23 @@
+class Solution(object):
+    def letterCombinations(self, digits):
+        phone = {
+        2: ['a', 'b', 'c'],
+        3: ['d', 'e', 'f'],
+        4: ['g', 'h', 'i'],
+        5: ['j', 'k', 'l'],
+        6: ['m', 'n', 'o'],
+        7: ['p', 'q', 'r', 's'],
+        8: ['t', 'u', 'v'],
+        9: ['w', 'x', 'y', 'z']}
+        currstr = ""
+        res=[]
+        i=0
+        self.backtrack(i,digits,phone,currstr,res)
+        return res
+    def backtrack(self,i,digits,phone,currstr,res):
+        if len(currstr)==len(digits):
+            res.append(currstr)
+            return 
+        for letter in phone[int(digits[i])] :
+            self.backtrack(i+1,digits,phone,currstr+letter,res)
+    
