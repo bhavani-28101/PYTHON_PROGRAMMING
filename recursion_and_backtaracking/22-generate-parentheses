@@ -1,0 +1,24 @@
+class Solution(object):
+    def generateParenthesis(self, n):
+        res=[]
+        currstr=""
+        self.backtrack(currstr,res,n)
+        return res
+    def backtrack(self,currstr,res,n):
+        if(len(currstr)>n*2):
+            return 
+        if(len(currstr)==n*2 and currstr[::-1]=="(" or len(currstr)==n*2 and 
+        currstr[0]==")" ):
+            return 
+        if(currstr.count(')') >n):
+            return 
+        if(currstr.count('(') >n):
+            return    
+        if(currstr.count(')') >currstr.count('(')):
+            return 
+        if(len(currstr)==n*2):
+            res.append(currstr)
+            return 
+        self.backtrack(currstr+"(",res,n)
+        self.backtrack(currstr+")",res,n)
+
