@@ -1,0 +1,23 @@
+class Solution:
+    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
+        res=[]
+        subset=[]
+        total=0
+        index=0
+        def backtrack(candidates,target,res,subset,index,total):
+            if(index==len(candidates)):
+                return 
+            if(total>target):
+                return
+            total+=candidates[index]
+            subset.append(candidates[index])
+            if(total==target):
+                res.append(subset[:])
+            elif(total<target):
+                backtrack(candidates,target,res,subset,index,total)
+            subset.pop()
+            total-=candidates[index]
+            index+=1
+            backtrack(candidates,target,res,subset,index,total)
+        backtrack(candidates,target,res,subset,index,total)
+        return res
